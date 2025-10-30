@@ -1,0 +1,42 @@
+{
+  "models": {
+    "planner": {
+      "name": "主思考模型-万清模型2",
+      "model": "ep-pygx5l-1761231063830355694",
+      "api_url": "https://wanqing.streamlakeapi.com/api/gateway/v1/endpoints/chat/completions",
+      "api_key": "KimSnueTn1XSeDXvShJMhl-zy-2A6ZUCisuoor0VRCk",
+      "role": "主思考模型"
+    },
+    "step_selector": {
+      "name": "融合模型-KAT-Coder",
+      "model": "KAT-Coder-Exp-72B-1010",
+      "api_url": "https://api.edgefn.net/v1/chat/completions",
+      "api_key": "sk-L7GJL2RVUc3Ji1iLFf130bA42c5244E18a927bB6FaE772Dc",
+      "role": "融合3个线程的内容"
+    },
+    "qwen2_7b": {
+      "name": "摘要模型-Qwen2-7B",
+      "model": "Qwen/Qwen2-7B-Instruct",
+      "api_url": "https://api.siliconflow.cn/v1/chat/completions",
+      "api_key": "sk-uzurkphzyyqkhjuodwfcycjjcdgznbdedqqheebyzohfhueg",
+      "role": "生成上下文摘要"
+    },
+    "qwen2_5_7b": {
+      "name": "反例模型-Qwen2.5-7B",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "api_url": "https://api.siliconflow.cn/v1/chat/completions",
+      "api_key": "sk-uzurkphzyyqkhjuodwfcycjjcdgznbdedqqheebyzohfhueg",
+      "role": "生成反例观点"
+    },
+    "glm4_9b": {
+      "name": "投票模型-GLM-4-9B",
+      "model": "THUDM/GLM-4-9B-0414",
+      "api_url": "https://api.siliconflow.cn/v1/chat/completions",
+      "api_key": "sk-uzurkphzyyqkhjuodwfcycjjcdgznbdedqqheebyzohfhueg",
+      "role": "投票验证"
+    }
+  },
+  "service_model": "triple-thread-thinking",
+  "max_tokens": 2000,
+  "temperature": 0.7
+}

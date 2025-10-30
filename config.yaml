@@ -1,0 +1,74 @@
+# Model Configuration
+models:
+  main_thinker:
+    name: "主思考模型-万清模型2"
+    model: "ep-pygx5l-1761231063830355694"
+    api_url: "https://wanqing.streamlakeapi.com/api/gateway/v1/endpoints/chat/completions"
+    role: "主思考模型"
+    temperature: 0.7
+    max_tokens: 2000
+  
+  fusion:
+    name: "融合模型-KAT-Coder"
+    model: "KAT-Coder-Exp-72B-1010"
+    api_url: "https://api.edgefn.net/v1/chat/completions"
+    role: "融合3个线程的内容"
+    temperature: 0.7
+    max_tokens: 4000
+  
+  summarizer:
+    name: "摘要模型-Qwen2-7B"
+    model: "Qwen/Qwen2-7B-Instruct"
+    api_url: "https://api.siliconflow.cn/v1/chat/completions"
+    role: "生成上下文摘要"
+    temperature: 0.5
+    max_tokens: 300
+  
+  counterexample_generator:
+    name: "反例模型-Qwen2.5-7B"
+    model: "Qwen/Qwen2.5-7B-Instruct"
+    api_url: "https://api.siliconflow.cn/v1/chat/completions"
+    role: "生成反例观点"
+    temperature: 0.8
+    max_tokens: 400
+  
+  validator:
+    name: "投票模型-GLM-4-9B"
+    model: "THUDM/GLM-4-9B-0414"
+    api_url: "https://api.siliconflow.cn/v1/chat/completions"
+    role: "投票验证"
+    temperature: 0.3
+    max_tokens: 200
+
+# Thinking Configuration
+thinking:
+  num_threads: 3
+  max_steps: 20
+  step_max_length: 400  # characters
+  enable_cache: true
+  
+# Validation Configuration
+validation:
+  enabled: true
+  num_counterexamples: 3
+  num_validators: 3
+  pass_threshold: 2  # minimum votes needed to pass
+  timeout: 30
+
+# Context Management
+context:
+  strategy: "smart"  # smart, full, minimal
+  enable_summary: true
+  preserve_first_step: true
+  preserve_recent_steps: 2
+  summary_compression_target: 0.3  # target 70% compression
+
+# Fusion Configuration
+fusion:
+  enabled: true
+  strategy: "intelligent"  # intelligent, simple_concat
+
+# Service Configuration
+service:
+  model_name: "triple-thread-thinking"
+  description: "Multi-threaded thinking with validation"
